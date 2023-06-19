@@ -1,8 +1,9 @@
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 import IconButton from './components/IconButton'
 import ProfileHeader from './components/ProfileHeader'
 import { createContext } from 'react'
 import { PROFILE_DATA } from './data'
+import ImageGrid from './components/ImageGrid'
 
 export const ProfileContext = createContext(null)
 
@@ -27,7 +28,10 @@ export default function App() {
           <IconButton className={"bi bi-list"} isBottom />
         </Col>
         <Col sm={11}>
-          <ProfileHeader />
+          <Container>
+            <ProfileHeader />
+            <ImageGrid />
+          </Container>
         </Col>
       </Row>
     </ProfileContext.Provider>
