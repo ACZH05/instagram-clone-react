@@ -1,9 +1,12 @@
 import { useContext, useState } from "react"
 import { ProfileContext } from "../App"
 import { Button, Col, Form, Image, Modal, Row } from "react-bootstrap"
+import { useDispatch } from "react-redux"
+import { createPost } from "../features/posts/postsSlice"
 
 export default function AddPostModal({ show, handleClose }) {
     const { image, name } = useContext(ProfileContext)
+    const dispatch = useDispatch()
 
     const [imageUrl, setImageUrl] = useState("")
     const [caption, setCaption] = useState("")
@@ -12,6 +15,7 @@ export default function AddPostModal({ show, handleClose }) {
     const handleSubmit = (e) => {
         e.preventDefault()
         if (imageUrl) {
+            dispatch(createPost({ image: imageUrl, caption }))
             setImageUrl("")
             setCaption("")
             handleClose()
